@@ -1,11 +1,15 @@
+const express = require('express');
+const app = express();
+const port = 3000;
 
+app.get('/', (req, res) => {
+    res.send('Home Page');
+});
 
-const { clear } = require('console');
-const http = require('http')
-console.log(clear);
-const server = http.createServer((req, res) => {
-    res.write('<h1>Hello World</h1>')
-    res.end()
-}).listen(8081)
+app.get("*", (req, res) => {
+    res.send('400 | Bad Request');
+});
 
-console.log('Listening on port 8081');
+app.listen(3000, () => {
+    console.log(`Escuchando en puerto ${port}!`);
+});
