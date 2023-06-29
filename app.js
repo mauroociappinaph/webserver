@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Home Page');
-});
+app.use(express.static('public'));
+
+
 
 app.get("*", (req, res) => {
-    res.send('400 | Bad Request');
+    res.sendFile(__dirname + '/public/404.html');
 });
 
 app.listen(3000, () => {
