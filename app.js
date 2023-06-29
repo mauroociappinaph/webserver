@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+
+require("dotenv").config();
+const port = process.env.PORT ;
 
 app.set('view engine', 'hbs');
 
@@ -22,7 +24,7 @@ app.get('/elements', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/public/404.html');
+    res.sendFile(__dirname + '/public/back/404.html');
 });
 
 app.listen(port, () => {
